@@ -1,0 +1,128 @@
+<!-- Header -->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo and Site Name -->
+            <a class="navbar-brand" href="/home">
+                <img src="../static/image/logo.png" alt="A" height="30">
+                Apple Online Store
+            </a>
+
+            <!-- Navbar Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navigation navbar-nav me-auto mb-2 mb-lg-0">
+                    <!--/*@thymesVar id="categoriesWithProductNames" type="java.util.Map<java.lang.String,java.util.List<java.lang.String>>"*/-->
+                    <th:block th:each="entity : ${categoriesWithProductNames.keySet()}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false" th:value="${entity}" th:text="${entity}">
+                                Категория
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li th:each="product : ${categoriesWithProductNames.get(entity)}">
+                                    <button class="dropdown-item button-navbar" th:value="${product}"
+                                            th:text="${product}">
+                                        iPhone 14 Pro Max
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+                </ul>
+
+                <!-- Cart, Login and Register Buttons -->
+                <ul class="menu navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button type="button" class="btn nav-link button-navbar" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Войти
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn nav-link button-navbar" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">Регистрация
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Модальное окно для входа -->
+    <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Войти</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-authorization">
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Электронная почта</label>
+                            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">Мы никогда не передадим вашу электронную почту третьим
+                                лицам.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="passwordInput">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                        <div id="errorMessageAuthorization" class="text-danger mt-3 text-center fs-2 fw-bold"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для регистрации -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true"
+         data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Регистрация пользователя</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Форма для регистрации пользователя -->
+                    <form id="form-registration">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Фамилия</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Адрес электронной почты</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Номер телефона</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                        </div>
+                        <div id="errorMessageRegistration" class="text-danger mt-3 text-center fs-2 fw-bold"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/authorizationAndRegistrationAjaxScript.js"></script>
+</div>

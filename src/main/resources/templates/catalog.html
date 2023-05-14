@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- Header -->
+<div th:replace="~{fragments/header.html}"></div>
+<!-- каталог -->
+<div class="container catalog">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Фильтр</h5>
+                    <form class="catalog-form">
+                        <div class="category mb-3">
+                            <label for="category-select" class="form-label">Категория товара</label>
+                            <select class="form-select" id="category-select">
+                                <!--/*@thymesVar id="category" type="java.lang.String"*/-->
+                                <option th:value="${category}" selected th:text="${category}"></option>
+                            </select>
+                        </div>
+                        <div class="mb-3 model">
+                            <label for="model-select" class="form-label">Модель</label>
+                            <select class="form-select" id="model-select">
+                                <!--/*@thymesVar id="model" type="java.lang.String"*/-->
+                                <option th:value="${model}" selected th:text="${model}"></option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="sort-by">
+                        <label for="sort">Сортировать:</label>
+                        <select id="sort">
+                            <option value="all">Не сортировать</option>
+                            <option value="price-asc">Цена: по возрастанию</option>
+                            <option value="price-desc">Цена: по убыванию</option>
+                            <option value="name-asc">Название: по возрастанию</option>
+                            <option value="name-desc">Название: по убыванию</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="product-cards row row-cols-1 row-cols-md-3 g-4">
+                <!-- products -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container d-flex justify-content-center">
+    <nav aria-label="page-navigation" class="mt-3">
+        <ul class="pagination justify-right">
+            <li class="page-item active">
+                <button class="btn btn-link page-link" type="button">1</button>
+            </li>
+            <li class="page-item">
+                <button class="btn btn-link page-link" type="button">2</button>
+            </li>
+            <li class="page-item">
+                <button class="btn btn-link page-link" type="button">3</button>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- footer  -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Contact Us</h5>
+
+                <p>
+                    <i class="fas fa-envelope me-3"></i>
+                    example@example.com
+                </p>
+                <p>
+                    <i class="fas fa-phone me-3"></i>
+                    + 01 234 567 88
+                </p>
+                <p>
+                    <i class="fas fa-print me-3"></i>
+                    + 01 234 567 89
+                </p>
+            </div>
+
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-0">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!" class="text-dark">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-dark">Terms and Conditions</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-dark">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Apple Inc. Все права не защищены.
+    </div>
+</footer>
+<script src="../static/js/catalogFilterAjaxScript.js"></script>
+
+</body>
+
+</html>

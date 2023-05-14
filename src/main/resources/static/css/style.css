@@ -1,0 +1,303 @@
+.count {
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 1em;
+    text-align: center;
+}
+
+body {
+    background-color: #edeef0;
+}
+
+.img-product {
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+.big-image{
+    border-radius: 50px;
+}
+
+.small-img {
+    width: 100px;
+}
+
+/* шапка */
+.navbar-nav {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-item {
+    position: relative;
+}
+
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 0;
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    padding: 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-item .dropdown-menu li a {
+    color: #333;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-nav .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+.navbar-nav .nav-item .dropdown-menu li a:hover {
+    background-color: #eee;
+}
+
+.button-navbar {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* банер */
+
+.banner {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+}
+
+.banner h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+}
+
+.catalog {
+    padding-top: 50px;
+}
+
+/* Стилизация фильтра */
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+}
+
+.filter label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ccc' d='M7.41,8.59L12,13.17l4.59-4.58L18,9l-6,6l-6-6L7.41,8.59z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+}
+
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.filter label {
+    margin-right: 10px;
+}
+
+.filter select {
+    padding: 5px;
+}
+
+.sort-by {
+    display: inline-block;
+    position: relative;
+    margin-right: 1em;
+}
+
+.sort-by label {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.sort-by select {
+    padding: 0.5em;
+    font-size: 1em;
+    border: none;
+    background-color: #f1f1f1;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.sort-by select::-ms-expand {
+    display: none;
+}
+
+.sort-by select option {
+    padding: 0.5em;
+}
+
+.card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+}
+
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.product-info {
+    padding: 50px;
+}
+
+.product-info {
+    text-align: center
+}
+
+.col img.active {
+    border: 4px solid #bababb;
+    border-radius: 5px;
+}
+
+/* Стили для блока с товаром */
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.button-color button,
+.button-memory button {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.prise {
+    font-size: 24px;
+}
+
+.rounded-pill {
+    border-radius: 20px;
+}
+
+.rounded-pill p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.button-buy button {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #28a745;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 50px;
+    color: #fff;
+}
+
+.button-buy button i {
+    margin-right: 10px;
+}
+
+.basket {
+    margin-bottom: 50px;
+}
+
+.product-specs {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.charsection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.charsection h4 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.charsection p {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: right;
+}
+
