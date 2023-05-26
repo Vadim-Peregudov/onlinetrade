@@ -3,6 +3,8 @@ package my.shop.onlinetrade.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "product_images")
 public class ProductImage {
@@ -57,5 +59,18 @@ public class ProductImage {
                 "id=" + id +
                 ", path='" + path + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductImage that = (ProductImage) o;
+        return Objects.equals(id, that.id) && Objects.equals(path, that.path);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, path);
     }
 }

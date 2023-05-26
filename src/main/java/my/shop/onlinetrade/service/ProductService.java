@@ -22,6 +22,6 @@ public interface ProductService {
 
     Map<String, Set<ProductCharacteristicValuesDto>> getCharacteristicsToProductsMapByCategory(Product product);
 
-    Map<Product,Integer> getProductsByIdsAndCount(Map<String, Integer> basket);
+    Map<Product,Integer> getProductsByIds(Map<String, Integer> basket);
 
 }

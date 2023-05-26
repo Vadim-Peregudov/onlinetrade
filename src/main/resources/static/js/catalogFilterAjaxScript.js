@@ -75,8 +75,8 @@ $(document).ready(function () {
         let filterParam = [];
 
         $('.param select').each(function () {
-            let label = $(this).prev('label').text(); // получаем текст label
-            let value = $(this).val(); // получаем значение select
+            let label = $(this).prev('label').text();
+            let value = $(this).val();
             filterParam.push({'name': label, 'value': value});
         });
 

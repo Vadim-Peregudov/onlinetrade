@@ -3,6 +3,8 @@ package my.shop.onlinetrade.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "product_features")
 public class ProductFeatures {
@@ -71,5 +73,19 @@ public class ProductFeatures {
                 ", features=" + features +
                 ", value='" + value + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductFeatures that = (ProductFeatures) o;
+        return Objects.equals(id, that.id) && Objects.equals(features, that.features) && Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, features, value);
     }
 }

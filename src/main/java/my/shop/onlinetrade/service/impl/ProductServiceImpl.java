@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Map<Product, Integer> getProductsByIdsAndCount(Map<String, Integer> basket) {
+    public Map<Product, Integer> getProductsByIds(Map<String, Integer> basket) {
         List<Long> ids = basket.keySet().stream().map(Long::valueOf).toList();
         List<Product> list = productRepository.findProductsByIds(ids);
 

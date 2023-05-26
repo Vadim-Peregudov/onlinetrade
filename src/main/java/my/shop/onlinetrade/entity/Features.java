@@ -2,6 +2,8 @@ package my.shop.onlinetrade.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "features")
 public class Features {
@@ -56,5 +58,18 @@ public class Features {
                 ", name='" + name + '\'' +
                 ", isFilterable=" + isFilterable +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Features features = (Features) o;
+        return Objects.equals(id, features.id) && Objects.equals(name, features.name) && Objects.equals(isFilterable, features.isFilterable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, isFilterable);
     }
 }

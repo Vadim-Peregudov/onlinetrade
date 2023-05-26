@@ -1,16 +1,20 @@
 package my.shop.onlinetrade.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.annotation.JsonKey;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import jakarta.persistence.*;
+import my.shop.onlinetrade.dto.ProductSerializer;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
+
 
 @Entity
 @Table(name = "products")
+@JsonSerialize(using = ProductSerializer.class)
 public class Product {
 
     @Id
@@ -129,6 +133,26 @@ public class Product {
         this.productImages = productImages;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(fullName, product.fullName) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(quantity, product.quantity) && Objects.equals(category, product.category);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, fullName, description, price, quantity, category);
+    }
 
+    @JsonKey
+    public String jsonKey() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
