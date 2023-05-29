@@ -41,6 +41,14 @@ $(document).ready(function () {
             },
         });
     }
+
+    $('.btn-checkout').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: "/basket/place-order",
+
+        })
+    })
 })
 
 function createBasket(basket) {
@@ -79,9 +87,29 @@ function createBasket(basket) {
 
         input.change(function () {
             let newValue = $(this).val();
+            let productId = product.id;
+
             tdPrise.text((product.price * newValue) / 100);
 
-            console.log(localStorage.getItem('basket'));
+            let basket = JSON.parse(localStorage.getItem('basket'));
+
+            basket[productId] = newValue;
+
+            localStorage.setItem('basket', JSON.stringify(basket));
+        });
+
+        button.click(function () {
+            let productId = product.id;
+
+            let basket = JSON.parse(localStorage.getItem('basket'));
+
+            delete basket[productId];
+
+            localStorage.setItem('basket', JSON.stringify(basket));
+
+            $('.navbar').trigger('updateCountProduct');
+
+            tr.remove();
         });
     });
 }

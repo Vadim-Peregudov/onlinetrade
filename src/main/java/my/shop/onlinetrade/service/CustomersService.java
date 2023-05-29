@@ -1,4 +1,5 @@
 package my.shop.onlinetrade.service;
 
-public interface ClientService {
+public interface CustomersService {
+
 }

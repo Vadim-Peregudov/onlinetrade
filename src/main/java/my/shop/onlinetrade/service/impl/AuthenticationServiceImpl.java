@@ -3,7 +3,7 @@ package my.shop.onlinetrade.service.impl;
 import my.shop.onlinetrade.entity.Customers;
 import my.shop.onlinetrade.entity.Role;
 import my.shop.onlinetrade.entity.User;
-import my.shop.onlinetrade.repository.ClientRepository;
+import my.shop.onlinetrade.repository.CustomersRepository;
 import my.shop.onlinetrade.repository.UserRepository;
 import my.shop.onlinetrade.security.*;
 import my.shop.onlinetrade.service.AuthenticationService;
@@ -22,16 +22,16 @@ import java.util.ArrayList;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserRepository userRepository;
-    private final ClientRepository clientRepository;
+    private final CustomersRepository customersRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public AuthenticationServiceImpl(UserRepository userRepository, ClientRepository clientRepository, PasswordEncoder passwordEncoder, RoleService roleService, JwtService jwtService, AuthenticationManager authenticationManager) {
+    public AuthenticationServiceImpl(UserRepository userRepository, CustomersRepository customersRepository, PasswordEncoder passwordEncoder, RoleService roleService, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
-        this.clientRepository = clientRepository;
+        this.customersRepository = customersRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
         this.jwtService = jwtService;
@@ -57,7 +57,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         );
 
         userRepository.save(user);
-        clientRepository.save(customers);
+        customersRepository.save(customers);
 
         UserDetails userDetails = new UserDetailsImpl(user);
 
